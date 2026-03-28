@@ -35,10 +35,17 @@ vim.g.loaded_ruby_provider = 0      -- Disable ruby provider
 vim.g.loaded_node_provider = 0      -- Disable node provider
 vim.g.did_install_default_menus = 1 -- do not load menu
 
+-- Windows fallback used only when Neovim cannot resolve a Python host from PATH.
+-- Replace this template with a real absolute path on Windows if `python3`/`python` are not discoverable.
+local windows_python_fallback = [[C:\Users\YOUR_USERNAME\AppData\Local\Programs\Python\Python312\python.exe]]
+
+-- Prefer automatic discovery first, and only fall back to a fixed Windows path as a last resort.
 if utils.executable("python3") then
     vim.g.python3_host_prog = fn.exepath("python3")
 elseif vim.g.is_win and utils.executable("python") then
     vim.g.python3_host_prog = fn.exepath("python")
+elseif vim.g.is_win and vim.uv.fs_stat(windows_python_fallback) then
+    vim.g.python3_host_prog = windows_python_fallback
 else
     vim.notify("Python host not found in PATH; Python provider will be unavailable.", vim.log.levels.WARN)
 end
