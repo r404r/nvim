@@ -6,7 +6,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = nil, -- 只修改 colorscheme,其它配置保持默认
+      colorscheme = "kanagawa",
     },
   },
 
@@ -187,24 +187,4 @@ return {
   { "olimorris/onedarkpro.nvim",   lazy = true },
   { "marko-cerovac/material.nvim", lazy = true },
 
-  -- 设置具体主题(已经确认不会覆盖LazyVim其它默认配置)
-  {
-    "LazyVim/LazyVim",
-    opts = function(_, opts)
-      local function set_colorscheme(theme)
-        local status_ok, _ = pcall(vim.cmd.colorscheme, theme)
-        if status_ok then
-          opts.colorscheme = theme
-        else
-          vim.notify("Failed to load colorscheme" .. theme, vim.log.levels.WARN)
-          -- 可以设置一个后备主题
-          opts.colorscheme = "vim"
-        end
-      end
-
-      -- NOTE: 实际主题在这边进行设置
-      -- set_colorscheme("catppuccin")
-      set_colorscheme("kanagawa")
-    end,
-  },
 }

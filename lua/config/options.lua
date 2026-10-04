@@ -3,20 +3,8 @@
 -- Add any additional options here
 local set = vim.opt
 local fn = vim.fn
-local api = vim.api
 
 local utils = require("config.utils")
-
-local function try_set_guifont(fonts)
-  for _, font in ipairs(fonts) do
-    local ok = pcall(function()
-      vim.opt.guifont = font
-    end)
-    if ok then
-      return font
-    end
-  end
-end
 
 ------------------------------------------------------------------------
 --                          custom variables                          --
@@ -60,25 +48,11 @@ if vim.g.ndx == 1 then
   -- 列表中第一个已安装的字体作为主字体，后续字体用于补齐缺失字形。:h12 用于指定字号。Lua 写法如下：
   vim.opt.guifont = { "Sarasa Term J NF", "Maple Mono NF CN", "Consolas", ":h11" }
 elseif vim.g.is_mac then
-  try_set_guifont({ "UDEV Gothic NF:h12", "Monaco:h12", "Menlo:h12" })
+  vim.o.guifont = "UDEV Gothic NF,Monaco,Menlo:h12"
 elseif vim.g.nvy == 1 then -- for nvy gui client
-  try_set_guifont({
-    "UDEV Gothic 35NFLG:h10:Consolas",
-    "Maple Mono NF CN:h10:Consolas",
-    "Consolas:h10",
-  })
-elseif vim.fn.has("gui_running") == 1 then
-  try_set_guifont({
-    "Sarasa Fixed CL Nerd Font SemiB:h10:Consolas",
-    "Maple Mono NF CN:h10:Consolas",
-    "Consolas:h10",
-  })
+  vim.o.guifont = "UDEV Gothic 35NFLG:h10:Consolas"
 else
-  try_set_guifont({
-    "Sarasa Fixed CL Nerd Font SemiB:h10:Consolas",
-    "Maple Mono NF CN:h10:Consolas",
-    "Consolas:h10",
-  })
+  vim.o.guifont = "Sarasa Fixed CL Nerd Font SemiB,Maple Mono NF CN,Consolas:h10"
 end
 
 set.scrolloff = 10

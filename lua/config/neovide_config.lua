@@ -1,16 +1,5 @@
 local utils = require("config.utils")
 
-local function try_set_guifont(fonts)
-    for _, font in ipairs(fonts) do
-        local ok = pcall(function()
-            vim.o.guifont = font
-        end)
-        if ok then
-            return font
-        end
-    end
-end
-
 if vim.g.neovide then
     ------------------------------------------------------------------------
     --                          custom variables                          --
@@ -24,16 +13,11 @@ if vim.g.neovide then
     -- vim.o.guifont = "JetBrainsMono Nerd Font:h10"
     -- vim.o.guifont = "UDEV Gothic 35NFLG:h11:Consolas"
     if vim.g.is_win then
-        try_set_guifont({
-            "Maple Mono NF CN:h11:Consolas",
-            "Maple Mono Nf CN:h11:Consolas",
-            "Cascadia Mono NF:h11",
-            "Consolas:h11",
-        })
+        vim.o.guifont = "Maple Mono NF CN,Maple Mono Nf CN,Cascadia Mono NF,Consolas:h11"
     elseif vim.g.is_mac then
-        try_set_guifont({ "Explex Console NF:h14:Consolas", "UDEV Gothic NF:h14", "Menlo:h14" })
+        vim.o.guifont = "Explex Console NF,UDEV Gothic NF,Menlo:h14"
     else
-        try_set_guifont({ "Explex Console NF:h11:Consolas", "Sarasa Fixed CL Nerd Font SemiB:h11", "Monospace:h11" })
+        vim.o.guifont = "Explex Console NF,Sarasa Fixed CL Nerd Font SemiB,Monospace:h11"
     end
 
     if vim.g.is_mac then
