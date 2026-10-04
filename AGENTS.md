@@ -2,7 +2,7 @@
 
 ## Project Overview
 - This repository is a personal Neovim configuration based on `LazyVim` and `lazy.nvim`.
-- Entry point is [`init.lua`](/Users/thomasd/.config/nvim/init.lua). It currently loads `config.lazy` and `config.neovide_config`.
+- Entry point is [`init.lua`](/Users/thomasd/.config/nvim/init.lua). It currently loads `config.lazy`, `config.neovide_config`, and `config.ndx_config`.
 - [`lua/config/options.lua`](/Users/thomasd/.config/nvim/lua/config/options.lua), [`lua/config/keymaps.lua`](/Users/thomasd/.config/nvim/lua/config/keymaps.lua), and [`lua/config/autocmds.lua`](/Users/thomasd/.config/nvim/lua/config/autocmds.lua) follow the LazyVim starter layout and are auto-loaded by the startup chain even though `init.lua` does not require them directly.
 - Plugin specs live under [`lua/plugins`](/Users/thomasd/.config/nvim/lua/plugins). Custom plugin behavior should usually be added there instead of editing LazyVim upstream defaults directly.
 
@@ -14,6 +14,7 @@
 - [`lua/plugins/snacks.lua`](/Users/thomasd/.config/nvim/lua/plugins/snacks.lua): `snacks.nvim` feature toggles and keymaps.
 - [`lua/plugins/lualine.lua`](/Users/thomasd/.config/nvim/lua/plugins/lualine.lua) and [`lua/config/plugins/lualine-config.lua`](/Users/thomasd/.config/nvim/lua/config/plugins/lualine-config.lua): statusline setup.
 - [`lua/plugins/nvim-treesitter.lua`](/Users/thomasd/.config/nvim/lua/plugins/nvim-treesitter.lua): active Treesitter plugin spec.
+- [`lua/config/ndx_config.lua`](lua/config/ndx_config.lua): Ndx-only animations and text glow.
 - [`lua/config/plugins/nvim-treesitter.lua`](/Users/thomasd/.config/nvim/lua/config/plugins/nvim-treesitter.lua): older direct setup file; currently not loaded from `init.lua`.
 - [`lua/plugins/example.lua`](/Users/thomasd/.config/nvim/lua/plugins/example.lua): LazyVim sample file, effectively disabled via `if true then return {} end`.
 - [`stylua.toml`](/Users/thomasd/.config/nvim/stylua.toml): formatting uses spaces, width 2, column width 120.
@@ -32,7 +33,7 @@
 - Treesitter should be changed in the active plugin spec at [`lua/plugins/nvim-treesitter.lua`](/Users/thomasd/.config/nvim/lua/plugins/nvim-treesitter.lua), not the inactive direct setup file, unless the task is explicitly to revive the older path.
 - `lualine` customization should stay in [`lua/config/plugins/lualine-config.lua`](/Users/thomasd/.config/nvim/lua/config/plugins/lualine-config.lua) because [`lua/plugins/lualine.lua`](/Users/thomasd/.config/nvim/lua/plugins/lualine.lua) delegates to it.
 - `snacks.nvim` is loaded eagerly (`lazy = false`) and already defines several keymaps. Check for key collisions before adding more mappings.
-- This config includes GUI-specific logic for Neovide in [`lua/config/neovide_config.lua`](/Users/thomasd/.config/nvim/lua/config/neovide_config.lua). GUI-only changes belong there.
+- Neovide settings belong in [`lua/config/neovide_config.lua`](/Users/thomasd/.config/nvim/lua/config/neovide_config.lua); Ndx settings belong in [`lua/config/ndx_config.lua`](lua/config/ndx_config.lua).
 
 ## Validation
 - Run `stylua` on changed Lua files when available.
