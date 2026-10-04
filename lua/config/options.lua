@@ -55,26 +55,33 @@ vim.g.mapleader = ","
 
 ---------------- vim options  ----------------
 
-if vim.fn.has("macunix") then
-    try_set_guifont({ "UDEV Gothic NF:h12", "Monaco:h12", "Menlo:h12" })
+if vim.g.ndx == 1 then
+  vim.opt.guifont = {
+    "Maple Mono NF CN",
+    "Sarasa Fixed CL Nerd Font SemiB",
+    "Consolas",
+    ":h11",
+  }
+elseif vim.g.is_mac then
+  try_set_guifont({ "UDEV Gothic NF:h12", "Monaco:h12", "Menlo:h12" })
 elseif vim.g.nvy == 1 then -- for nvy gui client
-    try_set_guifont({
-        "UDEV Gothic 35NFLG:h10:Consolas",
-        "Maple Mono NF CN:h10:Consolas",
-        "Consolas:h10",
-    })
-elseif vim.fn.has("gui_running") then
-    try_set_guifont({
-        "Sarasa Fixed CL Nerd Font SemiB:h10:Consolas",
-        "Maple Mono NF CN:h10:Consolas",
-        "Consolas:h10",
-    })
+  try_set_guifont({
+    "UDEV Gothic 35NFLG:h10:Consolas",
+    "Maple Mono NF CN:h10:Consolas",
+    "Consolas:h10",
+  })
+elseif vim.fn.has("gui_running") == 1 then
+  try_set_guifont({
+    "Sarasa Fixed CL Nerd Font SemiB:h10:Consolas",
+    "Maple Mono NF CN:h10:Consolas",
+    "Consolas:h10",
+  })
 else
-    try_set_guifont({
-        "Sarasa Fixed CL Nerd Font SemiB:h10:Consolas",
-        "Maple Mono NF CN:h10:Consolas",
-        "Consolas:h10",
-    })
+  try_set_guifont({
+    "Sarasa Fixed CL Nerd Font SemiB:h10:Consolas",
+    "Maple Mono NF CN:h10:Consolas",
+    "Consolas:h10",
+  })
 end
 
 set.scrolloff = 10
@@ -98,7 +105,7 @@ vim.opt.termguicolors = true -- 启用真彩色支持
 vim.opt.background = "dark"  -- 设置深色/浅色背景
 
 -- 解决找不到 fzf, fd 等的问题.
-if vim.fn.has("macunix") then
+if vim.g.is_mac then
     -- 在你的 init.lua 或相关配置文件中
     vim.env.PATH = vim.env.PATH .. ":/usr/local/bin:/opt/homebrew/bin" -- 添加可能的 fzf 路径
 end
