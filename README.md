@@ -8,9 +8,10 @@ Personal Neovim configuration built on top of `LazyVim` and `lazy.nvim`.
 - [`lua/plugins`](/Users/thomasd/.config/nvim/lua/plugins): custom plugin specs and overrides.
 - [`lazyvim.json`](/Users/thomasd/.config/nvim/lazyvim.json): enabled LazyVim extras.
 - [`lua/config/neovide_config.lua`](/Users/thomasd/.config/nvim/lua/config/neovide_config.lua): Neovide-specific GUI settings.
+- [`lua/config/ndx_config.lua`](lua/config/ndx_config.lua): Ndx-specific animations and text glow.
 
 ## Current Behavior
-- Startup currently loads `config.lazy` and `config.neovide_config`.
+- Startup currently loads `config.lazy`, `config.neovide_config`, and `config.ndx_config`.
 - `options`, `keymaps`, and `autocmds` follow the standard LazyVim starter layout and are auto-loaded by the startup chain even though `init.lua` does not require them directly.
 - `lua/config/options.lua` is active in practice, including settings such as `mapleader = ","`, Python host setup, and macOS PATH adjustments.
 - Treesitter is configured through [`lua/plugins/nvim-treesitter.lua`](/Users/thomasd/.config/nvim/lua/plugins/nvim-treesitter.lua).
