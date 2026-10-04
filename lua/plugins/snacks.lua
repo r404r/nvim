@@ -63,7 +63,7 @@ return {
       desc = "Lazygit Current File History",
     },
     {
-      "<leader>gl",
+      "<leader>gJ",
       function()
         Snacks.lazygit.log()
       end,

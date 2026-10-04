@@ -15,7 +15,7 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000, -- 确保在其他插件之前加载
-    lazy = false,    -- 确保立即加载
+    lazy = true,     -- 仅在切换到此主题时加载
     config = function()
       -- 错误处理
       local status_ok, catppuccin = pcall(require, "catppuccin")
@@ -67,7 +67,7 @@ return {
   -- Tokyonight 主题
   {
     "folke/tokyonight.nvim",
-    lazy = false,
+    lazy = true,
     priority = 1000,
     config = function()
       require("tokyonight").setup({
@@ -118,7 +118,7 @@ return {
   -- Gruvbox 主题
   {
     "ellisonleao/gruvbox.nvim",
-    lazy = false,
+    lazy = true,
     priority = 1000,
     config = function()
       require("gruvbox").setup({
