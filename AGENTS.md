@@ -12,7 +12,6 @@
 - [`lazyvim.json`](lazyvim.json): enabled LazyVim extras.
 - [`lua/plugins/colorscheme.lua`](lua/plugins/colorscheme.lua): colorscheme setup and final theme selection.
 - [`lua/plugins/snacks.lua`](lua/plugins/snacks.lua): only the `snacks.nvim` settings that differ from LazyVim (notification wrap, `<leader>gJ`, global `<leader>cR`, `<leader>N`, debug globals).
-- [`lua/plugins/lualine.lua`](lua/plugins/lualine.lua) and [`lua/config/plugins/lualine-config.lua`](lua/config/plugins/lualine-config.lua): statusline setup.
 - [`lua/plugins/nvim-treesitter.lua`](lua/plugins/nvim-treesitter.lua): active Treesitter plugin spec.
 - [`lua/config/ndx_config.lua`](lua/config/ndx_config.lua): Ndx-only animations and text glow.
 - [`stylua.toml`](stylua.toml): formatting uses spaces, width 2, column width 120.
@@ -27,9 +26,9 @@
 
 ## Plugin-Specific Notes
 - The fuzzy finder is the Snacks picker, enabled through the `lazyvim.plugins.extras.editor.snacks_picker` extra in [`lazyvim.json`](lazyvim.json). Do not add a second picker (telescope, fzf-lua, fzf.vim); LazyVim's picker keymaps follow the enabled extra.
-- Theme selection is finalized in [`lua/plugins/colorscheme.lua`](lua/plugins/colorscheme.lua). If changing the active colorscheme, update the LazyVim `opts.colorscheme` value there.
+- Theme selection is finalized in [`lua/plugins/colorscheme.lua`](lua/plugins/colorscheme.lua). If changing the active colorscheme, update the LazyVim `opts.colorscheme` value there. Installed themes: kanagawa (active) plus LazyVim's built-in tokyonight and catppuccin.
 - Treesitter parser additions belong in [`lua/plugins/nvim-treesitter.lua`](lua/plugins/nvim-treesitter.lua), on top of LazyVim's setup (nvim-treesitter `main` branch API). Incremental selection is LazyVim's flash-based `<C-Space>` / `<BS>`.
-- `lualine` customization should stay in [`lua/config/plugins/lualine-config.lua`](lua/config/plugins/lualine-config.lua) because [`lua/plugins/lualine.lua`](lua/plugins/lualine.lua) delegates to it.
+- `lualine` uses LazyVim's defaults (`theme = "auto"`, which picks kanagawa's lualine theme, and a global statusline with `laststatus = 3`). To customize it, add a `lua/plugins/lualine.lua` spec whose `opts = function(_, opts) ... end` extends LazyVim's opts; do not replace them with a `config` function.
 - LazyVim already configures `snacks.nvim` (loaded eagerly) and maps most of its features in `lazyvim/config/keymaps.lua`. Keep `lua/plugins/snacks.lua` to real overrides, and check LazyVim's keymaps for collisions before adding mappings.
 - Neovide settings belong in [`lua/config/neovide_config.lua`](lua/config/neovide_config.lua); Ndx settings belong in [`lua/config/ndx_config.lua`](lua/config/ndx_config.lua).
 

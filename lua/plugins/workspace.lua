@@ -24,8 +24,6 @@ return {
     },
   },
 
-  { "yorumicolors/yorumi.nvim" },
-
   -- for markdown table
   { "mattn/vim-maketable", cmd = { "MakeTable", "UnmakeTable" } },
 }
