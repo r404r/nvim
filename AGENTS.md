@@ -29,6 +29,7 @@
 - Keep comments and docs short. English is preferred for new comments unless the surrounding file is already predominantly Chinese or Japanese.
 
 ## Plugin-Specific Notes
+- The fuzzy finder is the Snacks picker, enabled through the `lazyvim.plugins.extras.editor.snacks_picker` extra in [`lazyvim.json`](lazyvim.json). Do not add a second picker (telescope, fzf-lua, fzf.vim); LazyVim's picker keymaps follow the enabled extra.
 - Theme selection is finalized in [`lua/plugins/colorscheme.lua`](lua/plugins/colorscheme.lua). If changing the active colorscheme, update the LazyVim `opts.colorscheme` value there.
 - Treesitter parser additions belong in [`lua/plugins/nvim-treesitter.lua`](lua/plugins/nvim-treesitter.lua); keep LazyVim's current plugin setup and avoid the inactive direct setup file unless explicitly reviving it.
 - `lualine` customization should stay in [`lua/config/plugins/lualine-config.lua`](lua/config/plugins/lualine-config.lua) because [`lua/plugins/lualine.lua`](lua/plugins/lualine.lua) delegates to it.

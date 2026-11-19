@@ -21,7 +21,7 @@ Personal Neovim configuration built on top of `LazyVim` and `lazy.nvim`.
 - Neovim `>= 0.11` recommended.
 - `git` is required for bootstrapping plugins.
 - Tree-sitter parser installation needs a C compiler, `curl`, `tar`, and a compatible `tree-sitter` CLI.
-- Optional tools such as `npx`, `fzf`, and `fd` improve plugin behavior.
+- Optional tools such as `npx`, `rg` (ripgrep), and `fd` improve plugin behavior.
 
 ## Windows Notes
 - Supported in principle, but you still need the external tools used by your enabled plugins.
@@ -29,7 +29,7 @@ Personal Neovim configuration built on top of `LazyVim` and `lazy.nvim`.
   - `git`
   - `python3` or `python`
   - `npx` for `markdown-preview.nvim`
-  - `fzf` and `fd` for fuzzy finding workflows
+  - `rg` (ripgrep) and `fd` for the Snacks picker (grep and file search)
   - `lazygit` if you want the git shortcuts exposed by `snacks.nvim`
 - Clipboard integration uses `unnamedplus`. This usually works in native Windows Neovim, but may behave differently in WSL or remote terminal setups.
 - Ndx and Neovide use ordered font lists with one size per client; Nvy keeps its documented `Primary:h10:Fallback` syntax. For consistent rendering, install at least one listed monospaced font such as `Maple Mono NF CN`, `Cascadia Mono NF`, or `Consolas`.
