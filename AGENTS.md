@@ -11,7 +11,7 @@
 - [`lua/config/lazy.lua`](lua/config/lazy.lua): bootstraps `lazy.nvim` and imports `lazyvim.plugins` plus local `plugins`.
 - [`lazyvim.json`](lazyvim.json): enabled LazyVim extras.
 - [`lua/plugins/colorscheme.lua`](lua/plugins/colorscheme.lua): colorscheme setup and final theme selection.
-- [`lua/plugins/snacks.lua`](lua/plugins/snacks.lua): `snacks.nvim` feature toggles and keymaps.
+- [`lua/plugins/snacks.lua`](lua/plugins/snacks.lua): only the `snacks.nvim` settings that differ from LazyVim (notification wrap, `<leader>gJ`, global `<leader>cR`, `<leader>N`, debug globals).
 - [`lua/plugins/lualine.lua`](lua/plugins/lualine.lua) and [`lua/config/plugins/lualine-config.lua`](lua/config/plugins/lualine-config.lua): statusline setup.
 - [`lua/plugins/nvim-treesitter.lua`](lua/plugins/nvim-treesitter.lua): active Treesitter plugin spec.
 - [`lua/config/ndx_config.lua`](lua/config/ndx_config.lua): Ndx-only animations and text glow.
@@ -33,7 +33,7 @@
 - Theme selection is finalized in [`lua/plugins/colorscheme.lua`](lua/plugins/colorscheme.lua). If changing the active colorscheme, update the LazyVim `opts.colorscheme` value there.
 - Treesitter parser additions belong in [`lua/plugins/nvim-treesitter.lua`](lua/plugins/nvim-treesitter.lua); keep LazyVim's current plugin setup and avoid the inactive direct setup file unless explicitly reviving it.
 - `lualine` customization should stay in [`lua/config/plugins/lualine-config.lua`](lua/config/plugins/lualine-config.lua) because [`lua/plugins/lualine.lua`](lua/plugins/lualine.lua) delegates to it.
-- `snacks.nvim` is loaded eagerly (`lazy = false`) and already defines several keymaps. Check for key collisions before adding more mappings.
+- LazyVim already configures `snacks.nvim` (loaded eagerly) and maps most of its features in `lazyvim/config/keymaps.lua`. Keep `lua/plugins/snacks.lua` to real overrides, and check LazyVim's keymaps for collisions before adding mappings.
 - Neovide settings belong in [`lua/config/neovide_config.lua`](lua/config/neovide_config.lua); Ndx settings belong in [`lua/config/ndx_config.lua`](lua/config/ndx_config.lua).
 
 ## Validation
