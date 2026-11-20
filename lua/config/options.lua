@@ -53,7 +53,7 @@ elseif vim.g.is_mac then
 elseif vim.g.nvy == 1 then -- for nvy gui client
   vim.o.guifont = "UDEV Gothic 35NFLG:h10:Consolas"
 else
-  vim.o.guifont = "Sarasa Fixed CL Nerd Font SemiB,Maple Mono NF CN,Consolas:h10"
+  vim.o.guifont = "Sarasa Fixed CL Nerd Font SemiB,Maple Mono NF CN,Consolas:h14"
 end
 
 set.scrolloff = 10
