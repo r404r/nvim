@@ -5,6 +5,15 @@ return {
   "folke/snacks.nvim",
   ---@type snacks.Config
   opts = {
+    scratch = {
+      win = {
+        wo = {
+          wrap = true, -- Wrap long lines in scratch notes
+          linebreak = true, -- Break at word boundaries, not mid-word
+          breakindent = true, -- Keep wrapped lines aligned with the first line
+        },
+      },
+    },
     styles = {
       notification = {
         wo = { wrap = true }, -- Wrap notifications
