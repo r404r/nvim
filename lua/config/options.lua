@@ -63,6 +63,10 @@ end
 
 set.scrolloff = 10
 
+-- Spell: check English only. Adding "cjk" excludes Chinese/Japanese/Korean
+-- text from spell checking, so CJK notes no longer get red undercurls.
+set.spelllang = { "en", "cjk" }
+
 -- Tabs/spaces
 set.expandtab = true
 set.shiftwidth = 2
