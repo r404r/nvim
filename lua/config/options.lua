@@ -14,7 +14,12 @@ vim.g.is_linux = (utils.has("unix") and (not utils.has("macunix"))) and true or 
 vim.g.is_mac = utils.has("macunix") and true or false
 
 vim.g.logging_level = "info"
-vim.g.minianimate_disable = true
+
+-- Animations: LazyVim's Snacks animations and smooth scrolling are on (toggle with <leader>ua / <leader>uS).
+-- Neovide and Ndx animate scrolling themselves, so keep Snacks' smooth scroll for the terminal UI only.
+if vim.g.neovide or vim.g.ndx == 1 then
+  vim.g.snacks_scroll = false
+end
 
 ------------------------------------------------------------------------
 --                         builtin variables                          --

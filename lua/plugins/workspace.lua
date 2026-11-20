@@ -6,27 +6,6 @@
 -- * override the configuration of LazyVim plugins
 return {
 
-  -- Navigate your code with search labels, enhanced character motions and Treesitter integration
-  -- https://github.com/folke/flash.nvim
-  {
-    "folke/flash.nvim",
-    event = "VeryLazy",
-    ---@type Flash.Config
-    opts = {},
-    -- stylua: ignore
-    keys = {
-      { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-      { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-      { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
-      { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
-    },
-  },
-
-  --{
-  --"scrooloose/nerdcommenter",
-  --},
-
   -- add this to your lua/plugins.lua, lua/plugins/init.lua,  or the file you keep your other plugins:
   -- Comment plugins
   -- gcc: 行注释当前行
@@ -36,26 +15,15 @@ return {
   -- 其它
   --    gc2w: 注释掉最近的两个单词
   --    在V模式下，使用gc 来在进行注释
+  -- Kept for blockwise comments (gb / gbc), which Neovim's built-in commenting does not provide.
   {
     "numToStr/Comment.nvim",
+    event = "VeryLazy",
     opts = {
       -- add any options here
     },
-    lazy = false,
   },
 
-  -- use mini.starter instead of alpha
-  --{ import = "lazyvim.plugins.extras.ui.mini-starter" },
-
-  -- add jsonls and schemastore packages, and setup treesitter for json, json5 and jsonc
-  --{ import = "lazyvim.plugins.extras.lang.json" },
-
-  --{ import = "lazyvim.plugins.extras.editor.mini-files" },
-
-  -- { "windwp/nvim-ts-autotag" },
-  { "yorumicolors/yorumi.nvim" },
-
   -- for markdown table
-  { "mattn/vim-maketable" },
-
+  { "mattn/vim-maketable", cmd = { "MakeTable", "UnmakeTable" } },
 }
